@@ -10,3 +10,25 @@
     import 'relative/path/to/stylesheet.scss';
 
 */
+.counter-holder {
+    background-color: darkslategray;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin: 0px auto;
+    padding: 1rem;
+    border-radius: 8px;
+    }  
+.digit {
+    margin: 0px;
+    color: white;
+    font-weight: bolder;
+    font-size: 1rem ;
+
+}
+body {
+    background-color: black;
+}
+h2 {
+    color: white;
+}
