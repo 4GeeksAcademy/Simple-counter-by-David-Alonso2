@@ -76,7 +76,7 @@ const Home = () => {
 					</section>
 					<section className="container text-center my-5">
 						<h2>Cuenta atrás</h2>
-						<form className="form-control bg-dark" onSubmit={e => e.preventDefault()}>
+						<form className="form-control bg-dark n" onSubmit={e => e.preventDefault()}>
 							<label className="form-text">Añadir al inicio
 								<input className="form-control" type="number"
 									value={timer}
