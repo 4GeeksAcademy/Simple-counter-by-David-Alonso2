@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from "react";
-
-
-
 import { Digit } from "./digit.jsx";
 
-//create your first component
 const Home = () => {
-
 	const [timer, setTimer] = useState(0)
 	const [active, setActive] = useState(false)
 	const [isCountDown, setIsCountDown] = useState(false)
@@ -14,27 +9,40 @@ const Home = () => {
 
 	useEffect(() => {
 		if (timer == alert && alert != 0) window.alert("Tiempo agotado")
-		if (active) {
-			setTimeout(() => {
-				setTimer(value => value + 1)
-			}, 1000)
+		if (active && !isCountDown) {
+			const interval = setTimeout(() => {
+
+				setTimer(value => value + 1);
+
+			}, 1000);
+			return () => clearTimeout(interval);
+
 
 		}
 		if (isCountDown) {
-			setTimeout(() => {
-				setTimer(value => value - 1)
 
-			}, 1000)
+			if (timer > 0) {
+
+				const interval = setTimeout(() => {
+
+					setTimer(value => value - 1);
+
+				}, 1000);
+				return () => clearTimeout(interval);
+			} else {
+				setIsCountDown(false);
+				setActive(false);
+
+			}
+
 		}
 
 
-
-
-	}, [timer, active, isCountDown])
+	}, [timer, active, isCountDown, alert])
 
 	const startStop = () => setActive(value => !value)
-	const resetTimer = () => setTimer(value => value = 0)
-	const handleChange = e => setTimer(value => value = e.target.value)
+	const resetTimer = () => setTimer(0)
+	const handleChange = e => setTimer(parseInt(e.target.value, 10) || 0);
 
 
 
